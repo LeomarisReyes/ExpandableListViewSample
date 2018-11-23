@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:local="clr-namespace:ExpandableListViewSample" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="ExpandableListViewSample.Views.MainPage">
+    <ContentPage.BindingContext>
+        <local:ViewModels.MainViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <ListView ItemsSource   = "{Binding Musics}" 
+                  BackgroundColor="#FAF3F6"
+                  HasUnevenRows = "true"
+                  ItemTapped    = "Handle_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal" Padding="0,40,0,0">  
+                                <Image   Source="{Binding picture}" WidthRequest="150" HeightRequest="75" />
+                                <Label   Text  ="{Binding name}" FontSize="15" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Padding="40,10,0,10" >
+                                <Button Text="Play"  BorderRadius="16" TextColor="White" BackgroundColor="#19E384" IsVisible="{Binding IsVisible}" />
+                                <Button Text="Pause" BorderRadius="16" TextColor="White" BackgroundColor="#D3487E" IsVisible="{Binding IsVisible}" />
+                                <Button Text="Stop"  BorderRadius="16" TextColor="White" BackgroundColor="#135AF0" IsVisible="{Binding IsVisible}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+    
+</ContentPage>
