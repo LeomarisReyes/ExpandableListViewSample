@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:local="clr-namespace:ExpandableListViewSample" 
+             xmlns:controls="clr-namespace:ExpandableListViewSample.Controls" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="ExpandableListViewSample.Views.MainPage">
     <ContentPage.BindingContext>
@@ -8,28 +9,28 @@
     </ContentPage.BindingContext>
 
     <StackLayout>
-        <ListView ItemsSource   = "{Binding Musics}" 
+        <controls:CustomListView ItemsSource = "{Binding Musics}" 
                   BackgroundColor="#FAF3F6"
                   HasUnevenRows = "true"
-                  ItemTapped    = "Handle_ItemTapped">
-            <ListView.ItemTemplate>
+                  ItemTapped    = "Handle_ItemTapped"
+                  Footer        = "">
+            <controls:CustomListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
+                    <ViewCell>`
                         <StackLayout>
-                            <StackLayout Orientation="Horizontal" Padding="0,40,0,0">  
+                            <StackLayout Orientation="Horizontal" Padding="16">  
                                 <Image   Source="{Binding picture}" WidthRequest="150" HeightRequest="75" />
-                                <Label   Text  ="{Binding name}" FontSize="15" />
+                                <Label   Text  ="{Binding name}"    FontSize="15"      Margin="0,16,0,0"/>
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal" Padding="40,10,0,10" >
-                                <Button Text="Play"  BorderRadius="16" TextColor="White" BackgroundColor="#19E384" IsVisible="{Binding IsVisible}" />
-                                <Button Text="Pause" BorderRadius="16" TextColor="White" BackgroundColor="#D3487E" IsVisible="{Binding IsVisible}" />
-                                <Button Text="Stop"  BorderRadius="16" TextColor="White" BackgroundColor="#135AF0" IsVisible="{Binding IsVisible}" />
+                            <StackLayout Orientation="Horizontal" Padding="16" IsVisible="{Binding IsVisible}" HorizontalOptions="EndAndExpand">
+                                <Button Text="Play"  WidthRequest="72" BorderRadius="16" TextColor="White" BackgroundColor="#19E384"/>
+                                <Button Text="Pause" WidthRequest="72" BorderRadius="16" TextColor="White" BackgroundColor="#D3487E"/>
+                                <Button Text="Stop"  WidthRequest="72" BorderRadius="16" TextColor="White" BackgroundColor="#135AF0"/>
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </controls:CustomListView.ItemTemplate>
+        </controls:CustomListView >
     </StackLayout>
-    
 </ContentPage>
